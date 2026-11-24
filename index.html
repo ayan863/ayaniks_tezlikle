@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ayaniks — Tezliklə xidmətinizdə</title>
+<meta name="description" content="Ayaniks — salonlar, klinikalar və ustalar üçün rezervasiya və sosial platforma. Tezliklə xidmətinizdə.">
+<meta name="theme-color" content="#0c0b09">
+<meta property="og:title" content="Ayaniks — Tezliklə xidmətinizdə">
+<meta property="og:description" content="Sevdiyin ustanı tap, bir toxunuşla rezerv et.">
+<meta property="og:url" content="https://ayaniks.com">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ayaniks">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0b09; --bg2:#14120e; --card:#1a1813; --line:rgba(212,175,106,.18);
+    --ivory:#f4efe4; --muted:#a59d8c; --gold:#d4af6a; --gold2:#f1d9a0; --gold3:#a8823e;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .gold-text{background:linear-gradient(100deg,var(--gold3) 0%,var(--gold) 30%,var(--gold2) 50%,var(--gold) 70%,var(--gold3) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+  @keyframes shine{to{background-position:-200% center}}
+
+  /* ----- header ----- */
+  header{position:fixed;inset:0 0 auto 0;z-index:10;padding:10px 0;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(12,11,9,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:.5px}
+  .brand .mark{font-style:italic;font-size:34px;line-height:1}
+  .langs{display:flex;gap:4px;border:1px solid var(--line);border-radius:999px;padding:3px}
+  .langs button{background:none;border:0;color:var(--muted);font:500 12px var(--sans);letter-spacing:1px;padding:6px 11px;border-radius:999px;cursor:pointer;transition:.2s}
+  .langs button.on{background:var(--gold);color:var(--bg)}
+
+  /* ----- hero ----- */
+  .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:120px 0 80px;
+    background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(212,175,106,.13),transparent 70%),var(--bg)}
+  .hero .A{width:clamp(150px,24vw,230px);height:auto;display:inline-block;filter:drop-shadow(0 8px 40px rgba(212,175,106,.3));animation:glow 4s ease-in-out infinite}
+  @keyframes glow{50%{filter:drop-shadow(0 8px 55px rgba(212,175,106,.5))}}
+  .logo-word{height:60px;width:auto;display:block}
+  @media (max-width:520px){header .logo-word{height:42px}}
+  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin:28px 0 22px}
+  .pill i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(212,175,106,.6);animation:pulse 2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(212,175,106,0)}100%{box-shadow:0 0 0 0 rgba(212,175,106,0)}}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(42px,7vw,82px);line-height:1.05;letter-spacing:-.5px}
+  .hero p.lead{max-width:560px;margin:22px auto 36px;color:var(--muted);font-size:clamp(16px,2vw,18px)}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:500;font-size:15px;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--gold2),var(--gold) 45%,var(--gold3));color:#17130b;box-shadow:0 10px 30px -10px rgba(212,175,106,.55);transition:transform .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:sweep 3.6s ease-in-out infinite}
+  @keyframes sweep{60%,100%{transform:translateX(120%)}}
+  .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid var(--line);border-radius:12px}
+  .scroll-hint::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--gold);animation:wheel 1.8s infinite}
+  @keyframes wheel{to{transform:translateY(12px);opacity:0}}
+
+  /* sparkles (4-point stars) */
+  .spark{position:absolute;width:var(--s,14px);height:var(--s,14px);opacity:0;animation:tw var(--d,4s) ease-in-out infinite;animation-delay:var(--t,0s);pointer-events:none}
+  .spark::before{content:"";position:absolute;inset:0;background:var(--gold2);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+  @keyframes tw{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+
+  /* ----- sections ----- */
+  section{padding:110px 0;position:relative}
+  .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.1;margin-bottom:18px}
+  .sub{color:var(--muted);max-width:620px;font-size:17px}
+  .center{text-align:center}.center .eyebrow{justify-content:center}.center .sub{margin:0 auto}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+  .stat{border:1px solid var(--line);border-radius:16px;padding:18px 14px;text-align:center;background:var(--bg2)}
+  .stat b{display:block;font-family:var(--serif);font-size:32px;font-weight:600;line-height:1.1}
+  .stat span{font-size:12.5px;color:var(--muted)}
+
+  /* phone mockup */
+  .phone{width:290px;margin:0 auto;border-radius:44px;padding:12px;background:linear-gradient(160deg,#2a2720,#0f0e0b);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(212,175,106,.25),0 0 90px -20px rgba(212,175,106,.25);position:relative}
+  .screen{border-radius:34px;background:var(--ivory);color:#1b1914;overflow:hidden;height:570px;position:relative;font-size:12px}
+  .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:86px;height:24px;border-radius:20px;background:#0c0b09;z-index:2}
+  .cover{height:118px;background:linear-gradient(135deg,#1c1a15,#3a3226);position:relative}
+  .cover::after{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 75% 30%,rgba(212,175,106,.45),transparent 55%)}
+  .avatar{width:68px;height:68px;border-radius:50%;border:3px solid var(--ivory);background:linear-gradient(135deg,var(--gold2),var(--gold3));position:absolute;left:18px;bottom:-34px;z-index:1;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:30px;color:#fff}
+  .pbody{padding:42px 18px 0}
+  .pname{font-weight:600;font-size:15px;display:flex;align-items:center;gap:6px}
+  .verified{width:15px;height:15px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:#fff;font-size:9px}
+  .pmeta{color:#7c7566;font-size:11px;margin-top:2px}
+  .rating{color:var(--gold3);font-weight:600}
+  .chips{display:flex;gap:6px;margin:14px 0}
+  .chips span{padding:5px 10px;border-radius:999px;background:#ebe4d4;font-size:10.5px;font-weight:500}
+  .chips span.on{background:#1b1914;color:var(--gold2)}
+  .svc{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border-radius:12px;background:#fff;margin-bottom:8px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .svc small{display:block;color:#8a8373;font-size:10px}
+  .svc b{font-weight:600}
+  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0 14px}
+  .slots span{text-align:center;padding:7px 0;border-radius:9px;border:1px solid #ddd4c1;font-size:10.5px;font-weight:500}
+  .slots span.on{background:var(--gold);border-color:var(--gold);color:#fff}
+  .slots span.off{color:#c3bba9;text-decoration:line-through}
+  .book{display:block;text-align:center;padding:12px;border-radius:12px;background:#1b1914;color:var(--gold2);font-weight:600;font-size:12.5px}
+  .toast{position:absolute;right:-34px;top:150px;background:var(--card);border:1px solid var(--line);color:var(--ivory);border-radius:14px;padding:10px 14px;font-size:12px;display:flex;gap:9px;align-items:center;box-shadow:0 20px 40px -15px rgba(0,0,0,.7);animation:float 5s ease-in-out infinite}
+  .toast.t2{left:-44px;right:auto;top:390px;animation-delay:-2.5s}
+  .toast em{font-style:normal;color:var(--gold);font-size:16px}
+  @keyframes float{50%{transform:translateY(-10px)}}
+
+  /* audience */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+  .card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:22px;padding:32px 28px;transition:transform .3s,border-color .3s}
+  .card:hover{transform:translateY(-4px);border-color:rgba(212,175,106,.45)}
+  .ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:rgba(212,175,106,.1);border:1px solid var(--line);margin-bottom:22px}
+  .ico svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-family:var(--serif);font-weight:600;font-size:26px;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15px}
+  .card ul{list-style:none;margin-top:16px}
+  .card li{font-size:14px;padding:5px 0 5px 22px;position:relative;color:#d6cfbf}
+  .card li::before{content:"";position:absolute;left:2px;top:12px;width:9px;height:9px;background:var(--gold);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px;counter-reset:s}
+  .step{padding:30px 26px;border-top:1px solid var(--line);position:relative}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-size:58px;font-weight:500;line-height:1;display:block;margin-bottom:14px;background:linear-gradient(180deg,var(--gold2),var(--gold3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .step h3{font-weight:500;font-size:19px;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* features */
+  .feat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:54px}
+  .f{border:1px solid var(--line);border-radius:18px;padding:24px 22px;background:var(--bg2)}
+  .f b{display:block;font-weight:500;font-size:16px;margin:12px 0 6px}
+  .f span{color:var(--muted);font-size:14px}
+  .f .ico{width:42px;height:42px;margin:0;border-radius:12px}
+  .f .ico svg{width:20px;height:20px}
+
+  /* final cta */
+  .final{text-align:center;border:1px solid var(--line);border-radius:30px;padding:80px 28px;position:relative;overflow:hidden;
+    background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(212,175,106,.16),transparent 70%),var(--bg2)}
+  .final .sub{margin:0 auto 34px}
+
+  footer{padding:46px 0 40px;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer a:hover{color:var(--gold)}
+
+  /* install button + modal */
+  .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-ghost{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font:500 15px var(--sans);color:var(--gold2);background:rgba(212,175,106,.06);border:1px solid rgba(212,175,106,.45);cursor:pointer;transition:.2s}
+  .btn-ghost:hover{background:rgba(212,175,106,.14);transform:translateY(-2px)}
+  .btn-ghost svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  body.installed .install-btn{display:none!important}
+  .lbl-done{display:none}
+  body.has-app .lbl-get{display:none} body.has-app .lbl-done{display:inline}
+  body.has-app .install-btn svg{display:none}
+  .note{font-size:13px;color:var(--muted);margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+  .done-badge{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(212,175,106,.14);border:1px solid var(--line);color:var(--gold2);font-size:26px;margin-bottom:14px}
+  .modal{position:fixed;inset:0;z-index:50;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:16px}
+  .modal.open{display:flex}
+  @media (min-width:600px){.modal{align-items:center}}
+  .sheet{width:100%;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px 24px 24px;position:relative;animation:up .35s cubic-bezier(.2,.8,.2,1)}
+  @keyframes up{from{transform:translateY(40px);opacity:0}}
+  .sheet .appicon{width:64px;height:64px;border-radius:16px;display:block;margin-bottom:14px;box-shadow:0 10px 30px -10px rgba(212,175,106,.4)}
+  .sheet h3{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.15;margin-bottom:8px}
+  .sheet p{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+  .sheet ol{list-style:none;counter-reset:i}
+  .sheet li{counter-increment:i;display:flex;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14.5px}
+  .sheet li::before{content:counter(i);flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(212,175,106,.12);color:var(--gold);font-weight:600;font-size:13px}
+  .sheet li b{color:var(--gold2);font-weight:500}
+  .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--muted);font-size:18px;cursor:pointer}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+  .rv.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .about{grid-template-columns:1fr;gap:70px}
+    .grid3,.steps{grid-template-columns:1fr}
+    .feat{grid-template-columns:1fr 1fr}
+    section{padding:80px 0}
+    .toast{right:-8px}.toast.t2{left:-8px}
+  }
+  @media (max-width:520px){
+    .feat{grid-template-columns:1fr}
+    .stats{gap:8px}.stat b{font-size:26px}
+    .brand{font-size:22px}.brand .mark{font-size:28px}
+    .phone{width:270px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .rv{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap">
+    <a href="#" class="brand"><img src="/logo-wordmark.png" alt="Ayaniks" class="logo-word"></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-l="az" class="on">AZ</button><button data-l="ru">RU</button><button data-l="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <span class="spark" style="top:22%;left:14%;--s:18px;--d:4.5s"></span>
+  <span class="spark" style="top:30%;right:16%;--s:12px;--d:3.6s;--t:1s"></span>
+  <span class="spark" style="bottom:26%;left:22%;--s:10px;--d:5s;--t:2s"></span>
+  <span class="spark" style="bottom:32%;right:24%;--s:16px;--d:4.2s;--t:.5s"></span>
+  <span class="spark" style="top:16%;left:52%;--s:9px;--d:3.2s;--t:1.6s"></span>
+  <div class="wrap">
+    <img src="/logo-mark.png" alt="Ayaniks" class="A"><br>
+    <div class="pill"><i></i><span data-t="pill">Tezliklə xidmətinizdə</span></div>
+    <h1 data-t="h1">Gözəlliyin və peşəkarlığın <span class="gold-text">yeni ünvanı</span></h1>
+    <p class="lead" data-t="lead">Sevdiyin ustanı tap, işlərinə bax və bir toxunuşla rezerv et. Ayaniks salonları, klinikaları və ustaları müştərilərlə bir platformada birləşdirir.</p>
+    <div class="actions">
+    <a class="btn" href="https://instagram.com/ayaniks" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      <span data-t="cta">Instagram-da izlə</span>
+    </a>
+    <button class="btn-ghost install-btn" type="button">
+      <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      <span class="lbl-get" data-t="inst">Tətbiq kimi yüklə</span><span class="lbl-done" data-t="instDone">Tətbiq yüklənib ✓</span>
+    </button>
+    </div>
+  </div>
+  <a href="#about" class="scroll-hint" aria-label="Aşağı"></a>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT + PREVIEW -->
+<section id="about">
+  <div class="wrap about">
+    <div class="rv">
+      <div class="eyebrow" data-t="e1">Ayaniks nədir?</div>
+      <h2 data-t="h2a">Rezervasiya və sosial şəbəkə — <span class="gold-text">bir yerdə</span></h2>
+      <p class="sub" data-t="p2a">Ayaniks-də hər peşəkarın öz səhifəsi olacaq: işləri, xidmətləri, qiymətləri və boş saatları. Müştəri zəng etmədən, yazışmadan uyğun vaxtı seçib dərhal yazılacaq. Biznes isə təqvimini, müştərilərini və gəlirini bir paneldən idarə edəcək.</p>
+      <div class="stats">
+        <div class="stat"><b class="gold-text">24/7</b><span data-t="s1">onlayn rezerv</span></div>
+        <div class="stat"><b class="gold-text">3</b><span data-t="s2">dil: AZ · RU · EN</span></div>
+        <div class="stat"><b class="gold-text">1</b><span data-t="s3">toxunuşla yazılış</span></div>
+      </div>
+    </div>
+
+    <div class="rv" style="position:relative">
+      <div class="phone" aria-label="Ayaniks profil görünüşü">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="cover"><div class="avatar">L</div></div>
+          <div class="pbody">
+            <div class="pname">Leyla Beauty Studio <span class="verified">✓</span></div>
+            <div class="pmeta"><span class="rating">★ 4.9</span> · 312 <span data-t="m1">rəy</span> · Bakı, Nərimanov</div>
+            <div class="chips"><span class="on" data-t="c1">Xidmətlər</span><span data-t="c2">İşlər</span><span data-t="c3">Rəylər</span></div>
+            <div class="svc"><div><b data-t="v1">Manikür + gel lak</b><small>60 <span data-t="min">dəq</span></small></div><b>25 ₼</b></div>
+            <div class="svc"><div><b data-t="v2">Saç kəsimi və ukladka</b><small>45 <span data-t="min">dəq</span></small></div><b>30 ₼</b></div>
+            <div class="slots"><span class="off">10:00</span><span>11:30</span><span class="on">13:00</span><span>14:30</span><span>16:00</span><span class="off">17:30</span><span>18:00</span><span>19:30</span></div>
+            <a class="book" data-t="b1">Bu gün, 13:00 — Rezerv et</a>
+          </div>
+        </div>
+        <div class="toast"><em>✦</em><span data-t="tst1">Rezerv təsdiqləndi!</span></div>
+        <div class="toast t2"><em>♥</em><span data-t="tst2">Yeni iş paylaşıldı</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section id="who" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow" data-t="e2">Kimlər üçün?</div>
+      <h2 data-t="h2b">Hər kəs üçün <span class="gold-text">bir platforma</span></h2>
+      <p class="sub" data-t="p2b">Müştəri, böyük biznes və ya fərdi usta — Ayaniks hər birinə öz alətlərini verir.</p>
+    </div>
+    <div class="grid3">
+      <div class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+        <h3 data-t="a1">Müştərilər</h3>
+        <p data-t="a1p">Yaxınlıqdakı ən yaxşı ustaları kəşf et və rahatlıqla yazıl.</p>
+        <ul><li data-t="a1l1">Xəritədə axtarış və filtrlər</li><li data-t="a1l2">Real işlər və rəylər</li><li data-t="a1l3">Xatırlatmalar, dost üçün rezerv</li></ul>
+      </div>
+      <div class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+        <h3 data-t="a2">Bizneslər</h3>
+        <p data-t="a2p">Salon və klinikalar üçün tam idarəetmə paneli.</p>
+        <ul><li data-t="a2l1">Təqvim və komanda cədvəli</li><li data-t="a2l2">Müştəri bazası və kampaniyalar</li><li data-t="a2l3">Gəlir və analitika</li></ul>
+      </div>
+      <div class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></div>
+        <h3 data-t="a3">Ustalar</h3>
+        <p data-t="a3p">Fərdi peşəkarlar üçün şəxsi brend və portfolio.</p>
+        <ul><li data-t="a3l1">Öz profil səhifən</li><li data-t="a3l2">"İşlərim" portfoliosu</li><li data-t="a3l3">Onlayn yazılış linki</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow" data-t="e3">Necə işləyəcək?</div>
+      <h2 data-t="h2c">Üç addımda <span class="gold-text">rezerv</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><h3 data-t="st1">Tap</h3><p data-t="st1p">Xidməti, ərazini və ya ustanın adını yaz — uyğun peşəkarlar dərhal qarşına çıxsın.</p></div>
+      <div class="step rv"><h3 data-t="st2">Seç</h3><p data-t="st2p">İşlərinə, qiymətlərinə və rəylərə bax, sənə uyğun boş saatı seç.</p></div>
+      <div class="step rv"><h3 data-t="st3">Gəl</h3><p data-t="st3p">Təsdiq və xatırlatma bildirişini al. Qalanını Ayaniks həll edəcək.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow" data-t="e4">Nələr olacaq?</div>
+      <h2 data-t="h2d">Premium təcrübə, <span class="gold-text">sadə istifadə</span></h2>
+    </div>
+    <div class="feat">
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div><b data-t="f1">Ağıllı təqvim</b><span data-t="f1p">Boş saatlar real vaxtda yenilənir.</span></div>
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></div><b data-t="f2">Xatırlatmalar</b><span data-t="f2p">Unudulmuş görüşlərə son.</span></div>
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><b data-t="f3">Portfolio lenti</b><span data-t="f3p">Ustaların ən yaxşı işləri bir yerdə.</span></div>
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></div><b data-t="f4">Real rəylər</b><span data-t="f4p">Yalnız xidmət almış müştərilərdən.</span></div>
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><b data-t="f5">Xəritədə axtarış</b><span data-t="f5p">Sənə ən yaxın peşəkarlar.</span></div>
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></div><b data-t="f6">Kampaniyalar</b><span data-t="f6p">Endirimlər rezervdə avtomatik tətbiq olunur.</span></div>
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg></div><b data-t="f7">Biznes analitikası</b><span data-t="f7p">Gəlir və müştəri statistikası.</span></div>
+      <div class="f rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><b data-t="f8">3 dil</b><span data-t="f8p">Azərbaycan, rus və ingilis dilində.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section>
+  <div class="wrap">
+    <div class="final rv">
+      <span class="spark" style="top:18%;left:10%;--s:14px;--d:4s"></span>
+      <span class="spark" style="bottom:20%;right:12%;--s:18px;--d:4.8s;--t:1.2s"></span>
+      <div class="eyebrow" style="justify-content:center" data-t="e5">Çox yaxında</div>
+      <h2 data-t="h2e">İlk istifadəçilərdən <span class="gold-text">biri ol</span></h2>
+      <p class="sub" data-t="p2e">Açılış xəbərini, biznes qeydiyyatını və ilk istifadəçilər üçün xüsusi təklifləri ilk olaraq Instagram səhifəmizdə paylaşacağıq.</p>
+      <div class="actions">
+        <a class="btn" href="https://instagram.com/ayaniks" target="_blank" rel="noopener"><span data-t="cta2">@ayaniks səhifəsini izlə</span></a>
+        <button class="btn-ghost install-btn" type="button"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span class="lbl-get" data-t="inst">Tətbiq kimi yüklə</span><span class="lbl-done" data-t="instDone">Tətbiq yüklənib ✓</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand"><img src="/logo-wordmark.png" alt="Ayaniks" class="logo-word" style="height:46px"></a>
+    <span>© <span id="yr">2026</span> Ayaniks · <span data-t="rights">Bütün hüquqlar qorunur</span></span>
+    <a href="https://instagram.com/ayaniks" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</footer>
+
+<div class="modal" id="instModal" role="dialog" aria-modal="true" aria-labelledby="instTitle">
+  <div class="sheet">
+    <button class="close" type="button" aria-label="Bağla">×</button>
+    <div id="viewSteps">
+    <img class="appicon" src="/icon-192.png" alt="Ayaniks">
+    <h3 id="instTitle" data-t="mTitle">Ayaniks-i ana ekrana əlavə et</h3>
+    <p data-t="mSub">Tətbiq kimi ana ekranda görünəcək və bir toxunuşla açılacaq.</p>
+    <ol id="stepsIOS">
+      <li><span data-t="i1">Safari-də aşağıdakı <b>Paylaş</b> ⬆︎ düyməsinə toxun</span></li>
+      <li><span data-t="i2"><b>"Ana ekrana əlavə et"</b> seçimini tap</span></li>
+      <li><span data-t="i3">Yuxarıda <b>"Əlavə et"</b> düyməsinə bas</span></li>
+    </ol>
+    <ol id="stepsOther" hidden>
+      <li><span data-t="o1">Brauzerin menyusunu aç (<b>⋮</b> və ya <b>⋯</b>)</span></li>
+      <li><span data-t="o2"><b>"Tətbiqi quraşdır"</b> və ya <b>"Ana ekrana əlavə et"</b> seç</span></li>
+      <li><span data-t="o3"><b>"Quraşdır"</b> ilə təsdiqlə</span></li>
+    </ol>
+    <ol id="stepsMac" hidden>
+      <li><span data-t="k1">Safari-də yuxarıdakı <b>Fayl</b> menyusunu aç</span></li>
+      <li><span data-t="k2"><b>"Dock-a əlavə et"</b> seç</span></li>
+      <li><span data-t="k3"><b>"Əlavə et"</b> ilə təsdiqlə</span></li>
+    </ol>
+    <p class="note" data-t="mNote">Artıq yükləmisinizsə, Ayaniks-i ana ekrandakı ikondan açın.</p>
+    </div>
+    <div id="viewDone" hidden>
+      <div class="done-badge">✓</div>
+      <h3 data-t="dTitle">Siz artıq yükləmisiniz</h3>
+      <p data-t="dSub">Ayaniks tətbiqi bu cihazda var. Açmaq üçün ana ekrandakı (kompüterdə — proqramlar siyahısındakı) <b>Ayaniks</b> ikonuna toxunun.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const T={
+ru:{pill:"Скоро для вас",h1:'Новый адрес <span class="gold-text">красоты и профессионализма</span>',lead:"Найди своего мастера, посмотри его работы и запишись в одно касание. Ayaniks объединяет салоны, клиники и мастеров с клиентами на одной платформе.",cta:"Следить в Instagram",
+e1:"Что такое Ayaniks?",h2a:'Запись и социальная сеть — <span class="gold-text">в одном месте</span>',p2a:"У каждого специалиста в Ayaniks будет своя страница: работы, услуги, цены и свободное время. Клиент выберет удобное время и запишется сразу — без звонков и переписки. Бизнес будет управлять календарём, клиентами и доходом из одной панели.",s1:"онлайн-запись",s2:"языка: AZ · RU · EN",s3:"касание до записи",
+m1:"отзывов",c1:"Услуги",c2:"Работы",c3:"Отзывы",v1:"Маникюр + гель-лак",v2:"Стрижка и укладка",min:"мин",b1:"Сегодня, 13:00 — Записаться",tst1:"Запись подтверждена!",tst2:"Новая работа опубликована",
+e2:"Для кого?",h2b:'Одна платформа <span class="gold-text">для всех</span>',p2b:"Клиент, крупный бизнес или частный мастер — Ayaniks даёт каждому свои инструменты.",
+a1:"Клиенты",a1p:"Находи лучших мастеров рядом и записывайся без лишних хлопот.",a1l1:"Поиск на карте и фильтры",a1l2:"Реальные работы и отзывы",a1l3:"Напоминания, запись для друга",
+a2:"Бизнес",a2p:"Полная панель управления для салонов и клиник.",a2l1:"Календарь и график команды",a2l2:"База клиентов и акции",a2l3:"Доход и аналитика",
+a3:"Мастера",a3p:"Личный бренд и портфолио для частных специалистов.",a3l1:"Своя страница профиля",a3l2:"Портфолио «Мои работы»",a3l3:"Ссылка для онлайн-записи",
+e3:"Как это будет работать?",h2c:'Запись <span class="gold-text">в три шага</span>',st1:"Найди",st1p:"Введи услугу, район или имя мастера — подходящие специалисты появятся сразу.",st2:"Выбери",st2p:"Посмотри работы, цены и отзывы, выбери удобное свободное время.",st3:"Приходи",st3p:"Получи подтверждение и напоминание. Остальное Ayaniks возьмёт на себя.",
+e4:"Что будет?",h2d:'Премиальный опыт, <span class="gold-text">простое использование</span>',f1:"Умный календарь",f1p:"Свободное время обновляется в реальном времени.",f2:"Напоминания",f2p:"Больше никаких забытых визитов.",f3:"Лента портфолио",f3p:"Лучшие работы мастеров в одном месте.",f4:"Честные отзывы",f4p:"Только от клиентов, получивших услугу.",f5:"Поиск на карте",f5p:"Ближайшие к тебе специалисты.",f6:"Акции",f6p:"Скидки применяются при записи автоматически.",f7:"Аналитика бизнеса",f7p:"Статистика дохода и клиентов.",f8:"3 языка",f8p:"Азербайджанский, русский и английский.",
+e5:"Совсем скоро",h2e:'Стань одним из <span class="gold-text">первых</span>',p2e:"Новости о запуске, регистрацию бизнеса и специальные предложения для первых пользователей мы сначала опубликуем в нашем Instagram.",cta2:"Подписаться на @ayaniks",rights:"Все права защищены",
+inst:"Установить приложение",mTitle:"Добавь Ayaniks на телефон",mSub:"Он появится на главном экране как приложение и откроется в одно касание.",i1:"В Safari нажми кнопку <b>Поделиться</b> ⬆︎ внизу",i2:"Выбери <b>«На экран „Домой“»</b>",i3:"Нажми <b>«Добавить»</b> вверху",o1:"Открой меню браузера (<b>⋮</b> или <b>⋯</b>)",o2:"Выбери <b>«Установить приложение»</b> или <b>«Добавить на главный экран»</b>",o3:"Подтверди кнопкой <b>«Установить»</b>",mTitle:"Добавь Ayaniks на главный экран",instDone:"Приложение установлено ✓",k1:"В Safari открой меню <b>Файл</b> сверху",k2:"Выбери <b>«Добавить в Dock»</b>",k3:"Подтверди кнопкой <b>«Добавить»</b>",mNote:"Если уже установили — откройте Ayaniks с иконки на главном экране.",dTitle:"Вы уже установили приложение",dSub:"Ayaniks уже есть на этом устройстве. Чтобы открыть, нажмите на иконку <b>Ayaniks</b> на главном экране (на компьютере — в списке программ)."},
+en:{pill:"Coming soon",h1:'The new home of <span class="gold-text">beauty & expertise</span>',lead:"Find your favourite pro, browse their work and book in a single tap. Ayaniks brings salons, clinics and independent pros together with clients on one platform.",cta:"Follow on Instagram",
+e1:"What is Ayaniks?",h2a:'Booking and social — <span class="gold-text">in one place</span>',p2a:"Every professional on Ayaniks gets their own page: portfolio, services, prices and open slots. Clients pick a time and book instantly — no calls, no messages. Businesses manage their calendar, clients and revenue from one panel.",s1:"online booking",s2:"languages: AZ · RU · EN",s3:"tap to book",
+m1:"reviews",c1:"Services",c2:"Work",c3:"Reviews",v1:"Manicure + gel polish",v2:"Haircut & styling",min:"min",b1:"Today, 13:00 — Book now",tst1:"Booking confirmed!",tst2:"New work posted",
+e2:"Who is it for?",h2b:'One platform <span class="gold-text">for everyone</span>',p2b:"Client, large business or independent pro — Ayaniks gives each of them the right tools.",
+a1:"Clients",a1p:"Discover the best pros nearby and book with ease.",a1l1:"Map search & filters",a1l2:"Real work and reviews",a1l3:"Reminders, book for a friend",
+a2:"Businesses",a2p:"A complete management panel for salons and clinics.",a2l1:"Calendar & team schedule",a2l2:"Client base & campaigns",a2l3:"Revenue & analytics",
+a3:"Independent pros",a3p:"A personal brand and portfolio for solo professionals.",a3l1:"Your own profile page",a3l2:"\"My Work\" portfolio",a3l3:"Online booking link",
+e3:"How will it work?",h2c:'Book in <span class="gold-text">three steps</span>',st1:"Find",st1p:"Type a service, area or a pro's name — the right professionals appear instantly.",st2:"Choose",st2p:"Check their work, prices and reviews, then pick a free slot that suits you.",st3:"Arrive",st3p:"Get a confirmation and a reminder. Ayaniks takes care of the rest.",
+e4:"What's inside?",h2d:'Premium experience, <span class="gold-text">effortless use</span>',f1:"Smart calendar",f1p:"Open slots update in real time.",f2:"Reminders",f2p:"No more forgotten appointments.",f3:"Portfolio feed",f3p:"The best work of every pro in one place.",f4:"Genuine reviews",f4p:"Only from clients who were served.",f5:"Map search",f5p:"Professionals closest to you.",f6:"Campaigns",f6p:"Discounts apply automatically at booking.",f7:"Business analytics",f7p:"Revenue and client statistics.",f8:"3 languages",f8p:"Azerbaijani, Russian and English.",
+e5:"Very soon",h2e:'Be one of the <span class="gold-text">first</span>',p2e:"Launch news, business sign-up and special offers for early users will be shared first on our Instagram.",cta2:"Follow @ayaniks",rights:"All rights reserved",
+inst:"Install the app",mTitle:"Add Ayaniks to your phone",mSub:"It will sit on your home screen like an app and open in one tap.",i1:"In Safari, tap the <b>Share</b> ⬆︎ button at the bottom",i2:"Choose <b>\"Add to Home Screen\"</b>",i3:"Tap <b>\"Add\"</b> at the top",o1:"Open the browser menu (<b>⋮</b> or <b>⋯</b>)",o2:"Choose <b>\"Install app\"</b> or <b>\"Add to Home screen\"</b>",o3:"Confirm with <b>\"Install\"</b>",mTitle:"Add Ayaniks to your home screen",instDone:"App installed ✓",k1:"In Safari, open the <b>File</b> menu at the top",k2:"Choose <b>\"Add to Dock\"</b>",k3:"Confirm with <b>\"Add\"</b>",mNote:"Already installed? Open Ayaniks from the icon on your home screen.",dTitle:"You've already installed it",dSub:"Ayaniks is already on this device. To open it, tap the <b>Ayaniks</b> icon on your home screen (on a computer — in your apps list)."}
+};
+const AZ={};document.querySelectorAll('[data-t]').forEach(e=>AZ[e.dataset.t]=e.innerHTML);T.az=AZ;
+const titles={az:"Ayaniks — Tezliklə xidmətinizdə",ru:"Ayaniks — Скоро для вас",en:"Ayaniks — Coming soon"};
+function setLang(l){
+  if(!T[l])l='az';
+  document.querySelectorAll('[data-t]').forEach(e=>{const v=T[l][e.dataset.t];if(v!=null)e.innerHTML=v});
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  document.documentElement.lang=l;document.title=titles[l];
+  try{localStorage.setItem('ayx-lang',l)}catch(e){}
+}
+document.querySelectorAll('.langs button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+let saved=null;try{saved=localStorage.getItem('ayx-lang')}catch(e){}
+const nav=(navigator.language||'az').slice(0,2);
+setLang(saved||(T[nav]?nav:'az'));
+
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*90+'ms';io.observe(el)});
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---- Tətbiq kimi yüklə (PWA) ---- */
+if('serviceWorker' in navigator && location.protocol==='https:'){
+  addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+}
+const KEY='ayx-installed';
+const store={get(){try{return localStorage.getItem(KEY)==='1'}catch(e){return false}},set(v){try{v?localStorage.setItem(KEY,'1'):localStorage.removeItem(KEY)}catch(e){}}};
+const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+function markInstalled(){store.set(true);document.body.classList.add('has-app')}
+if(standalone){document.body.classList.add('installed');store.set(true)}   // tətbiqin içindəyik: düymə gizlənir
+else if(store.get())document.body.classList.add('has-app');                // bu brauzerdə əvvəl yüklənib
+// Chrome/Android: tətbiq həqiqətən yüklüdürmü?
+if(!standalone&&navigator.getInstalledRelatedApps){
+  navigator.getInstalledRelatedApps().then(a=>{if(a&&a.length)markInstalled()}).catch(()=>{});
+}
+let deferred=null;
+// Brauzer yükləmə təklif edirsə, deməli tətbiq hazırda yüklü deyil (silinib ola bilər)
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;store.set(false);document.body.classList.remove('has-app')});
+addEventListener('appinstalled',()=>{markInstalled();showDone()});
+const modal=document.getElementById('instModal');
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const isMacSafari=!isIOS&&/Macintosh/.test(navigator.userAgent)&&/Safari/.test(navigator.userAgent)&&!/Chrome|Chromium|Edg|Firefox/.test(navigator.userAgent);
+const $=id=>document.getElementById(id);
+function openModal(){
+  $('viewSteps').hidden=false;$('viewDone').hidden=true;
+  $('stepsIOS').hidden=!isIOS;$('stepsMac').hidden=!isMacSafari;$('stepsOther').hidden=isIOS||isMacSafari;
+  modal.classList.add('open');
+}
+function showDone(){$('viewSteps').hidden=true;$('viewDone').hidden=false;modal.classList.add('open')}
+function closeModal(){modal.classList.remove('open')}
+modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('.close'))closeModal()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.querySelectorAll('.install-btn').forEach(b=>b.addEventListener('click',async()=>{
+  if(document.body.classList.contains('has-app'))return showDone();
+  if(deferred){deferred.prompt();const r=await deferred.userChoice;deferred=null;if(r.outcome==='accepted')markInstalled()}
+  else openModal();
+}));
+</script>
+</body>
+</html>

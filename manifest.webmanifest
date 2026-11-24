@@ -1,0 +1,37 @@
+{
+  "id": "/",
+  "name": "Ayaniks",
+  "short_name": "Ayaniks",
+  "description": "Ayaniks — salonlar, klinikalar və ustalar üçün rezervasiya və sosial platforma.",
+  "start_url": "/?source=app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0b09",
+  "theme_color": "#0c0b09",
+  "lang": "az",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://ayaniks.com/manifest.webmanifest"
+    }
+  ]
+}
